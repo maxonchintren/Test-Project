@@ -21,7 +21,7 @@ header {
         label {
             font-size: 35px;
             font-family: $font-main;
-            color: $color-main;
+            color: #fff;
             letter-spacing: 1px;
             margin: 10px;
         }
@@ -31,7 +31,7 @@ header {
             font-size: 20px;
             width: 400px;
             margin: 30px 10px;
-            background-color: desaturate($color: #27a6d6, $amount: 0.1);
+            background-color: desaturate($color: #b2d8d8, $amount: 0.1);
             border: none;
             color: $color-main;
         }
@@ -48,7 +48,7 @@ header {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        background-color: #70258C;
+        background-color: #4d4699;
         width: 15%;
         position: fixed;
         height: 100vh;
@@ -126,7 +126,7 @@ header {
 
     main {
         width: 100%;
-        background-color: #01CDFE;
+        background-color: #1a90b0;
         height: 100vh;
         margin-left: 15%;
 
@@ -137,7 +137,7 @@ header {
 
             h1 {
                 font-family: $font-main;
-                color: $color-main;
+                color: #ffe787;
                 font-size: 40px;
                 text-transform: capitalize;
             }
@@ -146,6 +146,15 @@ header {
                 width: 35px;
                 font-size: 15px;
                 margin: 5px;
+                background-color: #b1d1d1 ;
+                color: transparentize($color: #000000, $amount: 0.3);
+                border: none;
+
+                &:focus {
+                    background-color:desaturate($color: #9bd1d1, $amount: 0.1);;
+                    color: $color-main;
+                    outline: 0;
+                }
             }
 
             p {
@@ -161,8 +170,8 @@ header {
     .info-container {
         width: 15%;
         height: 100vh;
-        background-color: #3399FF;
-        color: $color-main;
+        background-color: #d1e9ef;
+        color: #0083a7;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -170,9 +179,10 @@ header {
 
         img {
             width: 100px;
-            height: 90px;
+            height: 100px;
             border-radius: 50%;
-            background-color: blue;
+            border: 2px solid transparentize($color: #000000, $amount: 0.7);
+            background-color: #d0e0ed;
             margin-top: 50%;
         }
 
@@ -186,9 +196,13 @@ header {
 .projects-list__container {
     width: 70%;
     margin: 50px auto;
-    background-color: lightgrey;
-    border: 2px solid transparentize($color: #000000, $amount: 0.5);
+    background-color: #0083a7;
+    box-shadow: 1px 26px 74px -8px rgba(0,0,0,0.58);
     padding: 40px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     table {
         color: $color-main;
@@ -198,7 +212,7 @@ header {
         margin: 0 auto;
 
         thead {
-            color: #3399FF;
+            color: #ffe787;
             font-size: 20px;
             font-weight: bolder;
 
@@ -208,19 +222,23 @@ header {
         }
 
         tr {
-            margin: 15px 0;
+            padding: 15px 0;
+            
 
             td {
-                margin: 40px;
                 color: $color-main;
+                border-bottom: 2px solid transparentize($color: #d1e9ef, $amount: 0.3);
+                padding: 10px 20px;
+                border-radius: 10px;
 
                 a {
                     text-decoration: none;
                     color: $color-main;
+                    font-size: 19px;
 
                     &:hover {
                         cursor: pointer;
-                        letter-spacing: 2px;
+                        letter-spacing: 1px;
                     }
                 }
             }

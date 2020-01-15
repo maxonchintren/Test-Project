@@ -26,7 +26,7 @@
     <div class='content-container'>
       <h1>Оцените свою эффективность как разработчика!</h1>
       <p>Оценка 
-        <input type='number' class='projects-count' min = '2' [max] = 'projects?.length' [value] = 'projectsCount'>
+        <input  type='number' class='projects-count' min = '2' [max] = 'projects?.length' [value] = 'projectsCount'>
         последних проектов
         <input type='button' class='button' value = 'Вперед!' (click) = 'show()'>
       </p>
@@ -44,8 +44,8 @@
             <td *ngIf = 'i < projectsCount'><a [href]='proj?.web_url' target="_blank">Ссылка на GitLab</a></td>
           </tr>
         </table>
-        <button (click) = 'showResults(); timeAverage()'>Показать результаты!</button>
-      </div>
+      <button class='button' (click) = 'showResults(); timeAverage()'>Показать результаты!</button>
+    </div>
       <app-results [projectsCount] = 'projectsCount' 
   [projects]="projects" 
   [timeForShownProj] = 'timeForShownProj'

@@ -7,11 +7,11 @@ $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 
     ul {
-        background-color: #70258C;
+        background-color: #4d4699;
         padding: 50px 20px;
-        border-radius: 20px;
+        margin-top: 50px;
         list-style: none;
-        
+        box-shadow: inset 1px 26px 74px -22px rgba(0,0,0,0.58);
 
         li {
             color: $color-main;
@@ -21,8 +21,8 @@ $font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         li.efficiency {
-            color: orange;
-            border-top: 1px solid gold;
+            color: #ffe787;
+            border-top: 1px solid #ffe787;
             font-size: 20px;
             font-family: $font-main;
             margin-top: 5px;
