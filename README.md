@@ -13,13 +13,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   2. SCSS
      1. Переменные
      2. Вложенность
-  3. Gitlab API
+  3. AJAX
+  4. Gitlab API
+
 
 ## Порядок запуска на новом компьютере
 
- 1. ```git clone https://github.com/maxonchintren/Test-Project.git```
- 2. ```npm install```
- 3. ```ng serve``` - запуск проекта на локальном сервере (см. следующий пункт)
+ 1. ```git clone https://github.com/maxonchintren/Test-Project.git``` - клонирование проекта
+ 3. ```cd Test-Project``` - перейти в папку проекта
+ 4. ```npm install``` - установка зависимостей
+ 5. ```ng serve``` - запуск проекта на локальном сервере (см. следующий пункт)
 
 ## Посмотреть результат на локальном сервере
 
