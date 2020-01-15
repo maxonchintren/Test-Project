@@ -1,0 +1,246 @@
+$color-main: #fff;
+$font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+* {
+    transition: 0.3s;
+}
+
+header {
+    height: 100vh;
+    background-image: url(./../assets/images/header-bg.png);
+    background-size: cover;
+
+    form {
+        position: absolute;
+        bottom: 30%;
+        margin-left: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        label {
+            font-size: 35px;
+            font-family: $font-main;
+            color: $color-main;
+            letter-spacing: 1px;
+            margin: 10px;
+        }
+
+        .gitlab-login__input {
+            height: 25px;
+            font-size: 20px;
+            width: 400px;
+            margin: 30px 10px;
+            background-color: desaturate($color: #27a6d6, $amount: 0.1);
+            border: none;
+            color: $color-main;
+        }
+    }
+}
+
+.outer-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+
+    .menu-container{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #70258C;
+        width: 15%;
+        position: fixed;
+        height: 100vh;
+        left: 0;
+        bottom: 0;
+        z-index: 10;
+
+
+        span {
+            align-self: flex-end;
+            color: $color-main;
+            font-size: 30px;
+            margin: 15px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0 15px 0;
+
+            li {
+                padding: 15px 0;
+                font-size: 20px;
+                font-family: $font-main;
+                color: $color-main;
+            }
+
+            .dropdown__parent {
+                position: relative;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &:hover .dropdown {
+                    cursor:pointer;
+                    opacity: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .dropdown {
+                    opacity: 0;
+                    margin-top: 1rem;
+                    display: none;
+                    list-style: none;
+                    padding: 0;
+                    
+
+                    li {
+                        background-color: #7e3a97;
+                        width: 200px;
+                        padding-left: 10px;
+                        transition: 0.2s;
+
+                        &:hover {
+                            color: #d4bddc;
+                            background-color: #591d70;
+                        }
+                    }
+                }
+            }
+            li.menu-header {
+                padding: 15px 0;
+                font-size: 20px;
+                font-family: $font-main;
+                color: #01CDFE;
+            }
+        }
+    }
+
+    main {
+        width: 100%;
+        background-color: #01CDFE;
+        height: 100vh;
+        margin-left: 15%;
+
+        .content-container {
+            margin: 70px auto;
+            width: 70%;
+            text-align: center;
+
+            h1 {
+                font-family: $font-main;
+                color: $color-main;
+                font-size: 40px;
+                text-transform: capitalize;
+            }
+
+            .projects-count {
+                width: 35px;
+                font-size: 15px;
+                margin: 5px;
+            }
+
+            p {
+                color: $color-main;
+                font-size: 25px;
+                font-family: $font-main;
+                margin-top : 50px;
+            }
+
+        }
+    }
+
+    .info-container {
+        width: 15%;
+        height: 100vh;
+        background-color: #3399FF;
+        color: $color-main;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 23px;
+
+        img {
+            width: 100px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: blue;
+            margin-top: 50%;
+        }
+
+        p {
+            font-family: $font-main;
+            margin-top: 50%;
+        }
+    }
+}
+
+.projects-list__container {
+    width: 70%;
+    margin: 50px auto;
+    background-color: lightgrey;
+    border: 2px solid transparentize($color: #000000, $amount: 0.5);
+    padding: 40px;
+
+    table {
+        color: $color-main;
+        font-family: $font-main;
+        font-size: 20px;
+        text-align: center;
+        margin: 0 auto;
+
+        thead {
+            color: #3399FF;
+            font-size: 20px;
+            font-weight: bolder;
+
+            td {
+                padding: 20px;
+            }
+        }
+
+        tr {
+            margin: 15px 0;
+
+            td {
+                margin: 40px;
+                color: $color-main;
+
+                a {
+                    text-decoration: none;
+                    color: $color-main;
+
+                    &:hover {
+                        cursor: pointer;
+                        letter-spacing: 2px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer {
+    height: 100px;
+    margin: 0;
+    font-family: $font-main;
+    color: lightgray;
+    width: 100%;
+    background-color: darkslategray;
+    z-index: 999;
+    display: flex;
+    justify-content: flex-end;
+
+    p {
+        margin: 0 80px;
+        padding-top: 60px;
+    }
+}

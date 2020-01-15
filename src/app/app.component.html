@@ -1,0 +1,62 @@
+<header  [style.margin-left] = 'headerMargin'>
+  <form>
+    <label for='gitlab-login'>Введите ваш логин Gitlab</label>
+    <input type='text' id='gitlab-login' class='gitlab-login__input' autocomplete="off" (click)='clearField()' (keydown.enter) = 'appStart(); false' [placeholder]='placeholderForInput'>
+    <input type='button' class='button' value='Начать!' (click) = 'appStart()'>
+  </form>
+</header>
+<section class = 'outer-container'>
+  <div class='menu-container' [style.width] = 'menuWidth'>
+    <span (click) = toggleMenu()>&#9776;</span>
+    <ul class='menu' *ngIf = 'menuVis'>
+      <li class = 'menu-header'>Menu</li>
+      <li class='dropdown__parent'>Something
+        <ul class = 'dropdown'>
+          <li>Surprise!</li>
+          <li>Lorem Ipsum</li>
+          <li>Mupsum Merol</li>
+        </ul>
+      </li>
+        
+      <li>More</li>
+      <li>MORE!</li>
+    </ul>
+  </div>
+  <main [style.margin-left] = 'mainMargin'>
+    <div class='content-container'>
+      <h1>Оцените свою эффективность как разработчика!</h1>
+      <p>Оценка 
+        <input type='number' class='projects-count' min = '2' [max] = 'projects?.length' [value] = 'projectsCount'>
+        последних проектов
+        <input type='button' class='button' value = 'Вперед!' (click) = 'show()'>
+      </p>
+    </div>
+    <div class='projects-list__container' *ngIf='projectsVis'>
+      <table>
+          <thead>
+              <td>Название проекта</td>
+              <td>Затраченное время</td>
+              <td>Перепроверить...</td>
+          </thead>
+          <tr *ngFor = 'let proj of projects; let i = "index"'>
+            <td *ngIf = 'i < projectsCount'>{{proj?.name}}</td>
+            <td *ngIf = 'i < projectsCount'>{{proj?.time}}</td>
+            <td *ngIf = 'i < projectsCount'><a [href]='proj?.web_url' target="_blank">Ссылка на GitLab</a></td>
+          </tr>
+        </table>
+        <button (click) = 'showResults(); timeAverage()'>Показать результаты!</button>
+      </div>
+      <app-results [projectsCount] = 'projectsCount' 
+  [projects]="projects" 
+  [timeForShownProj] = 'timeForShownProj'
+  [projWithoutTime] = 'projWithoutTime' 
+  *ngIf = 'resultsVis'></app-results>
+  </main>
+  <div class='info-container'>
+    <img class='user__avatar'>
+    <p class='name'></p>
+  </div> 
+</section>
+<footer>
+  <p>>All Rigths are not resereved</p>
+</footer>

@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+$color-main: #fff;
+$font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.button {
+    padding: 6px 10px;
+    margin: 0 5px;
+    font-size: 17px;
+    border: none;
+    font-family: $font-main;
+    background-color: lightgrey;
+}

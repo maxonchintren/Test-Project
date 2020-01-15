@@ -1,0 +1,31 @@
+$color-main: #fff;
+$font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+.results__container {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+
+    ul {
+        background-color: #70258C;
+        padding: 50px 20px;
+        border-radius: 20px;
+        list-style: none;
+        
+
+        li {
+            color: $color-main;
+            font-family: $font-main;
+            font-size: 20px;
+
+        }
+
+        li.efficiency {
+            color: orange;
+            border-top: 1px solid gold;
+            font-size: 20px;
+            font-family: $font-main;
+            margin-top: 5px;
+        }
+    }
+}
