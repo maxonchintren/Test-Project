@@ -26,6 +26,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 `ng serve` в терминале. Откройте в браузере `http://localhost:4200/`. 
 
 
-## Further help
+
 
 
