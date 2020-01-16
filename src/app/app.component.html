@@ -34,12 +34,14 @@
     <div class='projects-list__container' *ngIf='projectsVis'>
       <table>
           <thead>
-              <td>Название проекта</td>
-              <td>Затраченное время</td>
-              <td>Перепроверить...</td>
+              <td>Название проекта<span (click) = showDesc()>&#8660;</span></td>
+              <td *ngIf = 'descVis'>Описание проекта</td>
+              <td [class.moved]='isMoved'>Затраченное время</td>
+              <td [class.moved]='isMoved'>Перепроверить...</td>
           </thead>
           <tr *ngFor = 'let proj of projects; let i = "index"'>
             <td *ngIf = 'i < projectsCount'>{{proj?.name}}</td>
+            <td *ngIf = 'i < projectsCount && descVis'>{{proj?.description}}</td>
             <td *ngIf = 'i < projectsCount'>{{proj?.time}}</td>
             <td *ngIf = 'i < projectsCount'><a [href]='proj?.web_url' target="_blank">Ссылка на GitLab</a></td>
           </tr>

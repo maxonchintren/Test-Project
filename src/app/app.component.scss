@@ -127,7 +127,7 @@ header {
     main {
         width: 100%;
         background-color: #1a90b0;
-        height: 100vh;
+        min-height: 100vh;
         margin-left: 15%;
 
         .content-container {
@@ -169,7 +169,7 @@ header {
 
     .info-container {
         width: 15%;
-        height: 100vh;
+        min-height: 100vh;
         background-color: #d1e9ef;
         color: #0083a7;
         display: flex;
@@ -218,6 +218,19 @@ header {
 
             td {
                 padding: 20px;
+                width: 220px;
+
+                span {
+                    margin-left: 10px;
+                    
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            td.moved {
+                transform: translateX(10px);
             }
         }
 
@@ -230,6 +243,8 @@ header {
                 border-bottom: 2px solid transparentize($color: #d1e9ef, $amount: 0.3);
                 padding: 10px 20px;
                 border-radius: 10px;
+                width: 220px;
+
 
                 a {
                     text-decoration: none;

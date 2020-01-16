@@ -51,6 +51,8 @@ export class ProjectsService {
       console.log(err)
     }
   }
+
+
 // Kind of posting data to server
   public postData(obj) {
     return this._http.post(`https://gitlab.com/api/v4/users?username=${this.username}`, obj)

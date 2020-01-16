@@ -1,8 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ProjectsService } from './projects/projects.service';
-import { EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +31,9 @@ export class AppComponent implements OnInit {
 //Visibility for ngIf directory
   public menuVis: boolean = false;
   public projectsVis: boolean = false;
-  public resultsVis:boolean = false;
+  public resultsVis: boolean = false;
+  public descVis: boolean = false;
+  public isMoved: boolean = false;
 
 // Object for User's Projects
 
@@ -216,6 +216,12 @@ timeToRus = (time) => {
     this.projectsVis = true;
   }
 
+// Showing project description 
+
+  showDesc() {
+    this.descVis = !this.descVis;
+    this.isMoved = !this.isMoved;
+  }
 
 // Showing results
   showResults() {
