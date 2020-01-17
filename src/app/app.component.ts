@@ -8,7 +8,9 @@ import { ProjectsService } from './projects/projects.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
   title = 'CI-test';
+
   constructor(private _projectsService: ProjectsService) {}
 
 
@@ -38,7 +40,7 @@ export class AppComponent implements OnInit {
 // Object for User's Projects
 
   
-  public projects;
+  public projects = this._projectsService.projectsList;
 
   ngOnInit() {
 
@@ -51,6 +53,9 @@ public timeForShownProj: number;
 public projWithoutTime: number;
 
 timeAverage() {
+  if (!this.projects[0]) {
+    return false;
+  }
   let result:number = 0;
   let NanCounter:number = 0;
   for (let i = 0; i < this.projectsCount; i++) {
@@ -123,72 +128,55 @@ timeToRus = (time) => {
   return timeArr.join('');
 }
 
+async timeStatsRecord() {
+  let counter = 0;
+
+  for (let project of await this.projects) {
+
+    let projectId = project.id;
+
+    let projectIssues = await this._projectsService.getProjectInfo(projectId);
+
+    let projectTime;
+
+    if(projectIssues[0] === undefined) {
+      projectTime = 'Не указано';
+    } else {
+      let issueIid = projectIssues[0].iid;
+
+      let issueInfo = await this._projectsService.getTimeStats(projectId, issueIid);
+
+      if(issueInfo === undefined) {
+        projectTime = 'Не указано';
+      } else {
+        projectTime = issueInfo['human_total_time_spent'];
+      }
+    }
+
+    let rusTime = this.timeToRus(projectTime);
+    this.projects[counter].time = rusTime;
+    this.projects[counter].hours_spent = this.timeCalculation(projectTime);
+
+    counter += 1;
+  }
+}
+
 // Application Start
  async appStart() {
-    const usernameField = <HTMLInputElement>document.querySelector('.gitlab-login__input');
-    if (usernameField.value === '') {
-      this.placeholderForInput = 'Введите имя пользователя!';
-      return;
-    }
-    this._projectsService.username = usernameField.value;
-
-    const usernameName = document.querySelector('.name');
-    const usernameAvatar = <HTMLImageElement>document.querySelector('.user__avatar')
-    
-    let userInfo = await this._projectsService.getUserInfo();
-
-    if(userInfo[0] === undefined) {
-      usernameField.value = '';
-      usernameField.placeholder = 'Неверное имя пользователя!'
-      return false;
-    }
-
-    this.resultsVis = false;
-
-    usernameAvatar.src = userInfo[0].avatar_url;
-    usernameName.textContent =  userInfo[0].name;
-    let userId = userInfo[0].id;
+    this._projectsService.userInfoFill();
 
     let projects = await this._projectsService.getProjects();
     this.projects = projects;
 
-    let counter = 0;
-
-
-    for (let project of await this.projects) {
-
-      let projectId = project.id;
-
-      let projectIssues = await this._projectsService.getProjectInfo(projectId);
-
-      let projectTime;
-
-      if(projectIssues[0] === undefined) {
-        projectTime = 'Не указано';
-      } else {
-        let issueIid = projectIssues[0].iid;
-
-        let issueInfo = await this._projectsService.getTimeStats(projectId, issueIid);
-
-        if(issueInfo === undefined) {
-          projectTime = 'Не указано';
-        } else {
-          projectTime = issueInfo['human_total_time_spent'];
-        }
-      }
-
-      let rusTime = this.timeToRus(projectTime);
-      this.projects[counter].time = rusTime;
-      this.projects[counter].hours_spent = this.timeCalculation(projectTime);
-
-      counter += 1;
+    if (!this.projects) {
+      return false;
     }
 
-
+    this.timeStatsRecord();
   }
 
 // Toggling Menu
-  toggleMenu() {
+  toggleMenu():void {
     if (this.menuWidth === '15%') {
       this.menuWidth = "60px";
       this.menuVis = false;
@@ -218,13 +206,13 @@ timeToRus = (time) => {
 
 // Showing project description 
 
-  showDesc() {
+  showDesc():void {
     this.descVis = !this.descVis;
     this.isMoved = !this.isMoved;
   }
 
 // Showing results
-  showResults() {
+  showResults():void {
     this.resultsVis = true;
   }
 

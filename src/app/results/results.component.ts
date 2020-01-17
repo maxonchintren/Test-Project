@@ -53,12 +53,15 @@ export class ResultsComponent implements OnInit {
 
    isEfficient():string {
      let averageTime = this.averageTime();
+     if (!averageTime) {
+       return 'У вас недостаточно проектов!'
+     }
      if (typeof averageTime === 'string') {
        return '';
      }
 
      if(averageTime <= 10) {
-       return ('Вы эталон эффетивности в разработке!')
+       return 'Вы эталон эффетивности в разработке!'
      } else if (averageTime > 10 && averageTime <= 15) {
        return 'А вы довольно неплохи!'
      } else if (averageTime > 15 && averageTime <= 20) {

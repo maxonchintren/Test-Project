@@ -1,6 +1,6 @@
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { resolve } from 'url';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class ProjectsService {
   public username;
   public projectsList;
   
-  
+   constructor( private _http: HttpClient) { }
 
   //Get requests
 
@@ -57,5 +57,42 @@ export class ProjectsService {
   public postData(obj) {
     return this._http.post(`https://gitlab.com/api/v4/users?username=${this.username}`, obj)
   }
-  constructor( private _http: HttpClient) { }
+
+
+// Methods for Application start
+
+public async userInfoFill() {
+  // Getting user info and checking it's presence
+  const usernameField = <HTMLInputElement>document.querySelector('.gitlab-login__input');
+  if (usernameField.value === '') {
+    usernameField.placeholder = 'Введите имя пользователя!';
+  }
+
+  this.username = usernameField.value;
+
+  let userInfo = await this.getUserInfo();
+
+  if(userInfo[0] === undefined) {
+    usernameField.value = '';
+    usernameField.placeholder = 'Неверное имя пользователя!'
+    return false;
+  }
+
+  document.querySelector('form').reset()
+  usernameField.placeholder = '';
+
+  // Getting user photo and name
+  const usernameName = document.querySelector('.name');
+  const usernameAvatar = <HTMLImageElement>document.querySelector('.user__avatar')
+  usernameAvatar.src = userInfo[0].avatar_url;
+  usernameName.textContent =  userInfo[0].name;
+}
+
+
+public async projectsInfoFill() {
+  let projects =  await this.getProjects();
+  this.projectsList = projects;
+}
+  
+ 
 }
