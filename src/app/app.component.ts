@@ -168,12 +168,13 @@ async timeStatsRecord() {
     let projects = await this._projectsService.getProjects();
     this.projects = projects;
 
-    if (!this.projects) {
-      return false;
-    }
+    this.projectsVis = false;
+    this.resultsVis = false;
 
     this.timeStatsRecord();
   }
+
+
 
 // Toggling Menu
   toggleMenu():void {
@@ -192,7 +193,7 @@ async timeStatsRecord() {
   }
 // Showing Projects
   show() {
-    if (this.projects === undefined) {
+    if (!this.projects) {
       return false;
     }
     this.resultsVis = false;
@@ -202,6 +203,7 @@ async timeStatsRecord() {
       return false;
     }
     this.projectsVis = true;
+
   }
 
 // Showing project description 
